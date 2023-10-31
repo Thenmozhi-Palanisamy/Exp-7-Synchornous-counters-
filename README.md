@@ -46,24 +46,70 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+
+1.Set the input as clock.
+
+2.Register the output of 4 bit.
+
+3.Use Posedge on the input clock.
+
+4.For Up counter use AND and OR gates to declare the value of each bit.
+
+5.For Down counter use AND, OR and NOT gates to declare the value of each bit.
+
+6.End the module.
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Thenmozhi p
+RegisterNumber:  21221230116
 */
+## UP COUNTER :
+```
+module up(clk,A);
+input clk;
+output reg [3:0]A;
+always@(posedge clk)
+begin
+A[3]=((A[2]&A[1])&A[0])^A[3];
+A[2]=(A[1]&A[0])^A[2];
+A[1]=(A[0]^A[1]);
+A[0]=1^A[0];
+end
+endmodule
+```
+## DOWN COUNTER :
+```
+module down(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
 
 
 
-
-
+```
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
+UP COUNTER :
+
+
+![image](https://github.com/Thenmozhi-Palanisamy/Exp-7-Synchornous-counters-/assets/95198708/9d63344b-7d10-47b2-ac97-4566f6dd595d)
+
+
+DOWN COUNTER :
+
+![D2](https://github.com/Thenmozhi-Palanisamy/Exp-7-Synchornous-counters-/assets/95198708/dcd218c1-36be-4b55-99c0-c1e00efbe82f)
 
 
 
@@ -71,15 +117,31 @@ RegisterNumber:
 
 
 
+### TIMING DIGRAMS FOR COUNTER  :
 
-### TIMING DIGRAMS FOR COUNTER  
+UP COUNTER :
 
+![image](https://github.com/Thenmozhi-Palanisamy/Exp-7-Synchornous-counters-/assets/95198708/25b8acf3-9633-4eb4-88ba-cc2e0515437b)
 
+DOWN COUNTER :
+
+![D4](https://github.com/Thenmozhi-Palanisamy/Exp-7-Synchornous-counters-/assets/95198708/a847070e-1490-4341-8a2a-90cfaaf83d7d)
 
 
 
 ### TRUTH TABLE 
 
+UP COUNTER :
+
+![D5](https://github.com/Thenmozhi-Palanisamy/Exp-7-Synchornous-counters-/assets/95198708/00847c0a-7af3-436c-aa52-e3b59a3dcdce)
+
+DOWN COUNTER :
+
+![D6](https://github.com/Thenmozhi-Palanisamy/Exp-7-Synchornous-counters-/assets/95198708/a497a9c7-be66-4b35-be07-3849e7ad274f)
+
+RESULT:
+
+Thus the program has been executed successfully.
 
 
 
